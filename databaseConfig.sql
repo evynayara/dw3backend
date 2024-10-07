@@ -74,3 +74,12 @@ create table IF NOT EXISTS pedidos (
 insert into pedidos values 
  (default, 234, '2020-01-31', 6891.60, (SELECT clienteid from CLIENTES where codigo = 'CLI01'))
  ON CONFLICT DO NOTHING;
+
+create table IF NOT EXISTS escolas (
+    escolaid bigserial constraint pk_escolas PRIMARY KEY,
+    codigo varchar(50) UNIQUE,
+    nome VARCHAR(60),
+    dataAbertura VARCHAR(10),
+    ativo boolean,
+    deleted boolean DEFAULT false
+);

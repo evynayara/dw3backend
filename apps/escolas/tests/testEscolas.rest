@@ -1,0 +1,73 @@
+### Necessário para pegar o token    
+### Post  
+# @name loginAutenticado  
+POST http://localhost:40000/Login HTTP/1.1  
+content-type: application/json  
+  
+{      
+    "username": "qwe",  
+    "password": "qwe"  
+}  
+### Seta o token  
+@accessToken = {{loginAutenticado.response.body.$.token}}  
+@username = {{loginAutenticado.response.body.$.username}}  
+
+
+
+### teste de buscar todas as escolas  
+GET http://localhost:40000/GetAllEscolas HTTP/1.1  
+content-type: application/json  
+Authorization: Bearer {{accessToken}}  
+
+{      
+    
+}  
+
+### teste de buscar escola por ID  
+POST http://localhost:40000/GetEscolaByID HTTP/1.1  
+content-type: application/json  
+//Authorization:  {{accessToken}}  
+
+{     
+    "escolaid": 4  
+}  
+
+### teste de inserção de escola  
+POST http://localhost:40000/InsertEscolas HTTP/1.1  
+content-type: application/json  
+//Authorization: Bearer  
+ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ  
+  
+{      
+    "escolaid": 0,  
+    "codigo": "ESC001",   
+    "nome": "Escola de Nutrição",  
+    "dataAbertura": "2024-01-01",  
+    "ativo": true,  
+    "deleted": false      
+}  
+
+### teste de atualização de escola  
+POST http://localhost:40000/UpdateEscolas HTTP/1.1  
+content-type: application/json  
+//Authorization: Bearer  
+ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ  
+
+{      
+    "escolaid": 9,  
+    "codigo": "ESC002",  
+    "nome": "Escola de Fisioterapia",  
+    "dataAbertura": "2023-01-01",  
+    "ativo": true,  
+    "deleted": false   
+}  
+
+### teste de exclusão de escola  
+POST http://localhost:40000/DeleteEscolas HTTP/1.1  
+content-type: application/json  
+//Authorization: Bearer  
+ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NzM0ODE2NDEsInVzZXJuYW1lIjoicXdlIn0.LRKs8uvt-SJ9E9dMGYRkCs7HhMDlqVmwap_zcaoONeQ  
+
+{      
+    "escolaid": 9     
+}  
